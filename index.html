@@ -1,45 +1,392 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Bogdano Italiano cards</title>
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bogdano Italiano cards</title>
 <style>
-:root{--bg:#fffdf9;--ink:#17120f;--muted:#74706a;--pink:#cf1f66;--red:#cc2b42;--yellow:#ffd82e;--blue:#41a5ea;--green:#9edb70;--line:rgba(23,18,15,.16);--shadow:0 14px 32px rgba(23,18,15,.10)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;display:flex;justify-content:center}.app{width:min(920px,100%);padding:15px 10px 20px}
-.brand{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}.brand h1{font:950 clamp(27px,7vw,48px)/.92 Georgia,serif;letter-spacing:-.04em;margin:0;max-width:520px}.subtitle{margin-top:7px;font:950 clamp(18px,4.5vw,26px)/1 Georgia,serif;color:var(--pink)}
-.dots{display:flex;gap:7px;padding-top:6px}.dots i{width:13px;height:13px;border-radius:50%;display:block}.dots i:nth-child(1){background:#2f8f47}.dots i:nth-child(2){background:#fff;border:1px solid #ddd}.dots i:nth-child(3){background:#d8232a}
-.stats{display:flex;justify-content:space-between;color:var(--muted);font-weight:850;margin:8px 0 7px;font-size:14px}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:11px 0}.tab{border:0;border-radius:999px;background:transparent;color:var(--muted);font-weight:950;padding:11px 4px;font-size:14px}.tab.active{background:var(--ink);color:#fff;box-shadow:var(--shadow)}
-.panel{display:none}.panel.active{display:block}.progress{height:9px;border-radius:999px;background:#e5dfd3;overflow:hidden;margin-bottom:10px}.progress>div{height:100%;background:var(--ink);border-radius:999px;transition:.25s}
-.counters{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px}.counter{background:#fff;border:1px solid #eee8de;border-radius:15px;min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(23,18,15,.04);cursor:pointer}.counter b{font:950 28px/1 Georgia,serif}.counter span{font-weight:950;color:var(--muted);font-size:13px}.counter.active{outline:3px solid var(--yellow)}
-.stage{perspective:1200px}.flip{position:relative;height:315px;transform-style:preserve-3d;transition:.45s ease;cursor:pointer}.flip.flipped{transform:rotateY(180deg)}.face{position:absolute;inset:0;border-radius:24px;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:20px;box-shadow:var(--shadow);overflow:hidden}.front{background:linear-gradient(135deg,#fff8d4,#fff0a3);border:2px solid rgba(222,185,25,.35)}.back{background:linear-gradient(135deg,#eaf6ff,#d9efff);border:2px solid rgba(65,165,234,.35);transform:rotateY(180deg)}
-.faceTop{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-weight:950;letter-spacing:.08em;text-transform:uppercase;font-size:12px}.badge{background:rgba(255,255,255,.55);border-radius:999px;padding:7px 11px}.term{font:950 clamp(38px,11vw,70px)/.98 Georgia,serif;letter-spacing:-.055em;margin:38px 0 7px;text-align:center}.pos{text-align:center;color:var(--muted);font:italic 19px Georgia,serif}.chunk{display:block;width:max-content;max-width:100%;margin:18px auto 0;background:rgba(255,255,255,.55);border-radius:10px;padding:8px 12px;color:#625b4d;font-weight:800;text-align:center;font-size:14px}.translation{font:950 clamp(25px,7vw,42px)/1.08 Georgia,serif;text-align:center;margin:55px 0 14px;color:var(--pink)}.example{font-size:17px;line-height:1.42;text-align:center;color:#47413a;font-style:italic}.hint{position:absolute;right:20px;bottom:16px;color:var(--muted);font-weight:850;font-size:13px}
-.learn,.nav{display:grid;grid-template-columns:1fr 1fr;gap:8px}.learn{margin-top:9px}.nav{margin-top:8px}.btn{border:0;border-radius:15px;padding:13px 8px;font-size:16px;font-weight:950;cursor:pointer;background:#fff;box-shadow:0 7px 15px rgba(23,18,15,.05);color:var(--ink)}.btn.dark{background:var(--ink);color:#fff}.btn.red{background:#fff1f3;color:#c62845;border:1px solid #efb9c2}.btn.green{background:#e8f7e8;color:#2e8b57;border:1px solid #b8e2c2}.btn.blue{background:var(--blue);color:#fff}.btn.yellow{background:var(--yellow)}
-.quizBox,.exportBox,.list{background:#fff;border:1px solid #eee8de;border-radius:24px;padding:18px;box-shadow:var(--shadow)}.quizTitle{font:950 clamp(27px,7vw,46px)/1 Georgia,serif;color:var(--red);margin:0 0 16px}.wordBank{font:400 clamp(19px,5vw,31px)/1.35 Georgia,serif;color:#11934c;margin:0 0 20px}.sentence{font:400 clamp(25px,6vw,40px)/1.42 Georgia,serif;margin:14px 0 22px}.blank{display:inline-block;min-width:120px;border-bottom:3px solid var(--ink);height:1em}.opts{display:flex;flex-wrap:wrap;gap:8px}.opt{border:0;background:#fff9e1;border:2px solid rgba(255,216,46,.55);border-radius:999px;padding:10px 14px;font-weight:950;font-size:15px}.opt.ok{background:#ebf9df;border-color:#87cb65}.opt.no{background:#fff1f3;border-color:#e89ba6}.feedback{font-weight:950;color:var(--muted);min-height:24px;margin-top:10px}.quizControls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}
-.item{padding:18px 0;border-bottom:1px solid var(--line)}.item:first-child{padding-top:0}.item:last-child{border-bottom:0;padding-bottom:0}.itemHeader{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.itemTerm{font:950 28px Georgia,serif;color:#fff;background:var(--pink);border-radius:12px;padding:3px 11px}.itemPos{font-weight:950;border:1px dashed #d7c56a;background:#fff9d2;border-radius:10px;padding:5px 9px;color:#6f6534;text-transform:uppercase;font-size:12px;letter-spacing:.08em}.item p{margin:6px 0;font-size:17px;line-height:1.42}.exportBox h2{font:950 40px Georgia,serif;margin:0 0 8px}.note{color:var(--muted);font-weight:800;line-height:1.5;margin-bottom:14px}.exportGrid{display:grid;gap:10px}textarea{width:100%;min-height:165px;margin-top:14px;border:1px solid var(--line);border-radius:16px;background:#fffdf7;padding:14px;font:14px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}
-@media(max-width:560px){.app{padding:12px 10px 18px}.brand h1{font-size:32px}.subtitle{font-size:22px}.dots{margin-top:3px}.tabs{margin:9px 0}.flip{height:305px}.face{padding:18px}.term{margin-top:34px}.translation{margin-top:48px}.quizControls{grid-template-columns:1fr}.stats{font-size:13px}.counter{min-height:60px}.counter b{font-size:26px}.btn{padding:12px 8px}.chunk{font-size:13px}}
-@media(max-height:760px) and (max-width:560px){.brand h1{font-size:28px}.subtitle{font-size:19px}.dots i{width:11px;height:11px}.tabs .tab{padding:9px 3px}.counters{margin-bottom:8px}.counter{min-height:52px}.counter b{font-size:23px}.flip{height:260px}.term{font-size:42px;margin-top:25px}.translation{font-size:28px;margin-top:38px}.example{font-size:15px}.chunk{margin-top:12px}.learn,.nav{gap:7px}.btn{padding:10px 6px;font-size:15px}}
-</style></head>
-<body><main class="app">
-<header class="brand"><div><h1>Bogdano Italiano cards</h1><div class="subtitle">Verbi in cucina</div></div><div class="dots"><i></i><i></i><i></i></div></header>
-<div class="stats"><span id="topLeft"></span><span id="topRight"></span></div>
-<nav class="tabs"><button class="tab active" data-tab="cards">Cards</button><button class="tab" data-tab="quiz">Quiz</button><button class="tab" data-tab="list">List</button><button class="tab" data-tab="export">Export</button></nav>
-<section class="panel active" id="cards"><div class="stats"><span id="cardPos"></span><span id="cardPct"></span></div><div class="progress"><div id="cardBar"></div></div><div class="counters"><button class="counter active" id="filterAll"><b id="totalCards"></b><span>Tutte</span></button><button class="counter" id="filterKnown"><b id="knownCards">0</b><span>So</span></button><button class="counter" id="filterReview"><b id="reviewCards">0</b><span>Ripasso</span></button></div><div class="stage"><article class="flip" id="flipCard"><div class="face front"><div class="faceTop"><span id="num"></span><span class="badge">VERBO</span></div><div class="term" id="term"></div><div class="pos">italiano → russo</div><span class="chunk" id="chunk"></span><div class="hint">tap to flip</div></div><div class="face back"><div class="faceTop"><span>RISPOSTA</span><span class="badge">TRADUZIONE</span></div><div class="translation" id="translation"></div><div class="example" id="example"></div><div class="hint">tap to flip</div></div></article></div><div class="learn"><button class="btn red" id="markNo">Da ripassare</button><button class="btn green" id="markYes">Lo so</button></div><div class="nav"><button class="btn" id="prevCard">← Indietro</button><button class="btn" id="nextCard">Avanti →</button></div></section>
-<section class="panel" id="quiz"><div class="stats"><span id="quizPos"></span><span id="quizScore"></span></div><div class="progress"><div id="quizBar"></div></div><div class="quizBox"><h2 class="quizTitle">Indovina il verbo</h2><p class="wordBank" id="wordBank"></p><div class="sentence" id="sentence"></div><div class="opts" id="quizOptions"></div><div class="feedback" id="feedback"></div><div class="quizControls"><button class="btn" id="prevQuiz">← Indietro</button><button class="btn red" id="quizNo">Da ripassare</button><button class="btn dark" id="quizYes">Lo so</button></div></div></section>
-<section class="panel" id="list"><div class="list" id="listBox"></div></section>
-<section class="panel" id="export"><div class="exportBox"><h2>Export</h2><div class="note">Можно скопировать слова в Quizlet или скачать файл для Anki/CSV.</div><div class="exportGrid"><button class="btn yellow" id="quizletBtn">Copia per Quizlet</button><button class="btn blue" id="ankiBtn">Scarica Anki .txt</button><button class="btn" id="csvBtn">Scarica CSV</button></div><textarea id="exportText"></textarea></div></section>
+:root{
+  --bg:#fffdf9;--ink:#17120f;--muted:#746f68;--pink:#cf1f66;
+  --red:#c62845;--green:#2e8b57;--yellow:#ffd82e;--blue:#41a5ea;
+  --line:rgba(23,18,15,.14);--shadow:0 10px 24px rgba(23,18,15,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+body{display:flex;justify-content:center}
+.app{width:min(1160px,100%);height:100dvh;padding:clamp(8px,1.3vh,16px) clamp(10px,3vw,34px);display:grid;grid-template-rows:auto auto auto 1fr auto;gap:clamp(6px,1vh,10px)}
+
+.header{display:grid;grid-template-columns:1fr auto;align-items:start;gap:12px}
+h1{font:950 clamp(27px,4.8vw,52px)/.88 Georgia,serif;letter-spacing:-.04em;margin:0}
+.topic{font:950 clamp(18px,2.7vw,29px)/1 Georgia,serif;color:var(--pink);margin-top:4px}
+.dots{display:flex;gap:9px;padding-top:4px}
+.dots i{width:19px;height:19px;border-radius:50%;display:block}
+.dots i:nth-child(1){background:#2f8f47}.dots i:nth-child(2){background:#fff;border:1px solid #ddd}.dots i:nth-child(3){background:#d8232a}
+
+.meta{display:flex;justify-content:space-between;color:var(--muted);font-weight:900;font-size:clamp(12px,1.7vw,16px)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tab{border:0;border-radius:999px;background:transparent;color:var(--muted);font-weight:950;padding:clamp(8px,1.4vh,13px) 6px;font-size:clamp(13px,1.8vw,17px);cursor:pointer}
+.tab.active{background:var(--ink);color:#fff;box-shadow:var(--shadow)}
+
+.panel{display:none;min-height:0}
+.panel.active{display:grid;grid-template-rows:auto auto 1fr auto auto;gap:clamp(6px,1vh,10px);min-height:0}
+.progress{height:8px;border-radius:999px;background:#e6dfd3;overflow:hidden}
+.progress>div{height:100%;background:var(--ink);width:0%;border-radius:999px;transition:.2s}
+
+.counters{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.counter{border:1px solid #eee8de;background:#fff;border-radius:15px;min-height:clamp(42px,8vh,72px);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 5px 12px rgba(23,18,15,.04);cursor:pointer;font-weight:950;color:var(--muted)}
+.counter b{font:950 clamp(22px,4.5vw,32px)/1 Georgia,serif;color:var(--ink)}
+.counter.active{outline:3px solid var(--yellow)}
+#knownCount{color:var(--green)} #reviewCount{color:var(--red)}
+
+.stage{perspective:1200px;min-height:0;display:flex;align-items:center}
+.flip{position:relative;width:100%;height:88%;min-height:190px;transform-style:preserve-3d;transition:.42s;cursor:pointer}
+.flip.flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:24px;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:clamp(14px,2.5vw,24px);box-shadow:var(--shadow);overflow:hidden}
+.front{background:linear-gradient(135deg,#fff8d4,#fff0a3);border:2px solid rgba(222,185,25,.38);display:flex;flex-direction:column;justify-content:center;align-items:center}
+.back{background:linear-gradient(135deg,#eaf6ff,#d9efff);border:2px solid rgba(65,165,234,.35);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;align-items:center}
+.faceTop{position:absolute;top:clamp(14px,2vw,24px);left:clamp(14px,2vw,24px);right:clamp(14px,2vw,24px);display:flex;justify-content:space-between;color:var(--muted);font-weight:950;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+.badge{background:rgba(255,255,255,.55);border-radius:999px;padding:7px 11px}
+.term{font:950 clamp(34px,6vw,62px)/1 Georgia,serif;letter-spacing:-.055em;text-align:center;margin:0}
+.chunk{display:block;width:max-content;max-width:100%;margin:clamp(10px,2vh,16px) auto 0;background:rgba(255,255,255,.55);border-radius:10px;padding:8px 12px;color:#625b4d;font-weight:850;text-align:center;font-size:clamp(12px,1.8vw,15px)}
+.frontExample{display:none}
+.translation{font:950 clamp(27px,6vw,50px)/1.08 Georgia,serif;text-align:center;margin:0 0 14px;color:var(--pink)}
+.example{font-size:clamp(15px,2vw,20px);line-height:1.42;text-align:center;color:#47413a;font-style:italic;max-width:740px}
+.hint{position:absolute;right:18px;bottom:14px;color:var(--muted);font-weight:850;font-size:13px}
+
+.learn,.nav{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn{border:1px solid #e4dacb;border-radius:15px;padding:clamp(9px,1.7vh,14px) 6px;font-size:clamp(14px,2vw,17px);font-weight:950;cursor:pointer;background:#fff;box-shadow:0 7px 15px rgba(23,18,15,.05);color:var(--ink);white-space:nowrap;min-width:0}
+.btn.red{background:#fff1f3;color:var(--red);border:1px solid #efb9c2}
+.btn.green{background:#e8f7e8;color:var(--green);border:1px solid #b8e2c2}
+.btn.yellow{background:var(--yellow);border:1px solid #d9b900} .btn.blue{background:var(--blue);color:#fff}
+
+.quizPanel.active{grid-template-rows:auto auto 1fr}
+.quizBox{background:#fff;border:1px solid #eee8de;border-radius:22px;padding:clamp(16px,2.3vw,26px);box-shadow:var(--shadow);min-height:0;display:grid;grid-template-rows:auto auto auto auto;gap:clamp(8px,1.4vh,16px)}
+.quizTitle{font:950 clamp(20px,2.8vw,30px)/1 Georgia,serif;color:var(--red);margin:0}
+.wordBank{display:none}
+.sentence{font:400 clamp(22px,3.2vw,36px)/1.35 Georgia,serif;margin:0}
+.blank{display:inline-block;min-width:95px;border-bottom:3px solid var(--ink);height:1em}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:0;background:#fff9e1;border:2px solid rgba(255,216,46,.62);border-radius:999px;padding:9px 14px;font-weight:950;font-size:clamp(14px,1.8vw,16px);cursor:pointer}
+.opt.ok{background:#ebf9df;border-color:#87cb65}
+.opt.no{background:#fff1f3;border-color:#e89ba6}
+.opt:disabled{opacity:.95}
+.feedback{font-weight:950;color:var(--muted);min-height:20px}
+.quizControls{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+.listPanel.active{grid-template-rows:1fr}
+.list{background:#fff;border:1px solid #eee8de;border-radius:22px;padding:16px 22px;box-shadow:var(--shadow);overflow:auto}
+.item{padding:13px 0;border-bottom:1px solid var(--line)} .item:last-child{border:0}
+.itemHeader{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.itemTerm{font:950 24px Georgia,serif;color:#fff;background:var(--pink);border-radius:10px;padding:2px 10px}
+.itemPos{font-weight:950;border:1px dashed #d7c56a;background:#fff9d2;border-radius:10px;padding:4px 8px;color:#6f6534;text-transform:uppercase;font-size:11px;letter-spacing:.08em}
+.item p{margin:5px 0;font-size:16px;line-height:1.35}
+
+.exportPanel.active{grid-template-rows:1fr}
+.exportBox{background:#fff;border:1px solid #eee8de;border-radius:22px;padding:18px 22px;box-shadow:var(--shadow);display:grid;grid-template-rows:auto 1fr auto;gap:10px;min-height:0}
+.exportBox h2{font:950 38px Georgia,serif;margin:0}
+.exportText{width:100%;height:100%;min-height:120px;border:1px solid var(--line);border-radius:16px;background:#fffdf7;padding:12px;font:14px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;resize:none}
+.exportGrid{display:grid;gap:8px}
+
+.footer{display:flex;justify-content:center;gap:4px;align-items:center;flex-direction:column}
+.footerTitle{text-align:center;color:var(--muted);font-weight:950;font-size:13px}
+.socialRow{display:flex;gap:14px}
+.social{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-weight:950;box-shadow:0 8px 18px rgba(23,18,15,.14)}
+.social svg{width:26px;height:26px;display:block}
+.tg{background:#2AABEE} .tg svg{width:18px;height:18px;transform:translateX(-1px)}
+.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.th{background:#111}
+
+.finish{text-align:center;align-content:center;display:grid;gap:14px}
+.finish h2{font:950 clamp(34px,6vw,58px)/1 Georgia,serif;color:var(--pink);margin:0}
+.finish p{font-weight:900;color:var(--muted);font-size:20px;margin:0}
+
+@media(max-width:560px){
+  .app{padding:8px 10px 12px;gap:5px}
+  h1{font-size:29px} .topic{font-size:20px} .dots i{width:16px;height:16px}
+  .meta{font-size:12px} .tabs{gap:5px} .tab{padding:8px 3px}
+  .counter{min-height:49px} .counter b{font-size:22px}
+  .flip{min-height:0;height:88%}
+  .term{font-size:36px}
+  .chunk{font-size:12px;margin-top:12px}
+  .frontExample{font-size:13px;margin-top:10px}
+  .translation{font-size:29px}
+  .example{font-size:14px}
+  .face{border-radius:20px}
+  .btn{font-size:14px;padding:9px 4px}
+  .quizBox{border-radius:20px;padding:14px}
+  .quizTitle{font-size:30px}
+  .sentence{font-size:24px}
+  .blank{min-width:76px}
+  .footerTitle{font-size:12px}
+  .social{width:40px;height:40px} .social svg{width:23px;height:23px} .tg svg{width:17px;height:17px}
+}
+</style>
+</head>
+<body>
+<main class="app">
+  <header class="header">
+    <div><h1>Bogdano Italiano<br>cards</h1><div class="topic">Verbi in cucina</div></div>
+    <div class="dots"><i></i><i></i><i></i></div>
+  </header>
+  <div class="meta"><span id="metaWords"></span><span id="metaQuiz"></span></div>
+  <nav class="tabs">
+    <button class="tab active" data-tab="cards">Carte</button>
+    <button class="tab" data-tab="quiz">Quiz</button>
+    <button class="tab" data-tab="list">Lista</button>
+    <button class="tab" data-tab="stats">Statistiche</button>
+    <button class="tab" data-tab="export" style="display:none">Export</button>
+  </nav>
+
+  <section class="panel active" id="cardsPanel">
+    <div class="progress"><div id="cardBar"></div></div>
+    <div class="counters">
+      <button class="counter active" id="filterNew"><b id="newCount">20</b><span>Nuove</span></button>
+      <button class="counter" id="filterKnown"><b id="knownCount">0</b><span>So</span></button>
+      <button class="counter" id="filterReview"><b id="reviewCount">0</b><span>Ripasso</span></button>
+    </div>
+    <div class="stage">
+      <article class="flip" id="flipCard">
+        <div class="face front">
+          <div class="faceTop"><span id="cardNum">01</span><span class="badge">VERBO</span></div>
+          <div class="term" id="term"></div>
+          <span class="chunk" id="chunk"></span>
+          <div class="frontExample" id="frontExample"></div>
+          <div class="hint">gira la carta</div>
+        </div>
+        <div class="face back">
+          <div class="faceTop"><span>RISPOSTA</span><span class="badge">TRADUZIONE</span></div>
+          <div class="translation" id="translation"></div>
+          <div class="example" id="example"></div>
+          <div class="hint">gira la carta</div>
+        </div>
+      </article>
+    </div>
+    <div class="learn"><button class="btn red" id="markReview">Da ripassare</button><button class="btn green" id="markKnown">Lo so</button></div>
+    <div class="nav"><button class="btn" id="prevCard">← Indietro</button><button class="btn" id="nextCard">Avanti →</button></div>
+  </section>
+
+  <section class="panel quizPanel" id="quizPanel">
+    <div class="progress"><div id="quizBar"></div></div>
+    <div class="quizBox" id="quizBox">
+      <h2 class="quizTitle">Completa la frase</h2>
+      <div class="sentence" id="sentence"></div>
+      <div class="opts" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="quizControls"><button class="btn" id="prevQuiz">← Indietro</button><button class="btn yellow" id="nextQuiz">Avanti →</button></div>
+    </div>
+  </section>
+
+  <section class="panel listPanel" id="listPanel"><div class="list" id="listBox"></div></section>
+
+  <section class="panel exportPanel" id="exportPanel"><div class="exportBox">
+    <h2>Export</h2>
+    <textarea class="exportText" id="exportText" readonly></textarea>
+    <div class="exportGrid">
+      <button class="btn yellow" id="copyQuizlet">Copia per Quizlet</button>
+      <button class="btn blue" id="downloadAnki">Scarica Anki .txt</button>
+      <button class="btn" id="downloadCsv">Scarica CSV</button>
+    </div>
+  </div></section>
+
+  <section class="panel exportPanel" id="statsPanel"><div class="exportBox">
+    <h2>Statistiche</h2>
+    <div class="list" id="statsBox"></div>
+    <button class="btn red" id="resetAll">Ricomincia tutto</button>
+  </div></section>
+
+  <footer class="footer">
+    <div class="footerTitle">Seguimi sui social</div>
+    <div class="socialRow">
+      <a class="social tg" href="https://t.me/shutkin_bogdan" target="_blank" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.9 15.7 9.5 21c.6 0 .9-.3 1.2-.6l2.9-2.8 6 4.4c1.1.6 1.9.3 2.2-1l4-18.5c.4-1.5-.5-2.1-1.6-1.7L1.3 9.6C-.2 10.2-.2 11 .9 11.3l5.8 1.8L20.3 4.6c.6-.4 1.2-.2.7.2z"/></svg></a>
+      <a class="social ig" href="https://instagram.com/shutkin_bogdan" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a class="social th" href="https://threads.net/@shutkin_bogdan" target="_blank" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.3 11.1c-.2-3.1-1.9-4.8-4.9-4.8-2 0-3.6.9-4.5 2.5l1.9 1.3c.6-1 1.4-1.5 2.6-1.5 1.6 0 2.5.8 2.7 2.5-1-.2-2-.2-3-.1-2.8.2-4.6 1.6-4.5 3.8.1 2.1 1.9 3.5 4.4 3.4 3.2-.2 5-2 5.3-4.8 1.2.7 1.9 1.7 1.9 3 0 2.5-2.5 4.3-6.5 4.4-4.8.1-7.8-2.9-7.9-7.7C4.7 8 7.7 4.9 12 4.8c3.1 0 5.5 1.4 6.8 4l2.1-1.1C19.1 4.2 16 2.4 12 2.4 6.3 2.5 2.3 6.6 2.4 12.9c.1 6 4.1 10.2 10.3 10 5.3-.1 8.9-2.7 8.9-6.5 0-2.5-1.6-4.4-4.3-5.3zm-5.5 4.8c-1.1.1-1.9-.4-1.9-1.2 0-.8.9-1.3 2.3-1.4.9-.1 1.8 0 2.7.2-.3 1.4-1.3 2.3-3.1 2.4z"/></svg></a>
+    </div>
+  </footer>
 </main>
+
 <script>
-const items = [{"term": "cucinare", "pos": "verbo", "translation": "готовить", "chunk": "cucinare la pasta / cucinare per gli amici", "example": "La domenica mi piace cucinare qualcosa di speciale."}, {"term": "preparare", "pos": "verbo", "translation": "подготавливать; готовить", "chunk": "preparare la cena / preparare gli ingredienti", "example": "Prima di iniziare, preparo tutti gli ingredienti."}, {"term": "tagliare", "pos": "verbo", "translation": "резать", "chunk": "tagliare il pane / tagliare le verdure", "example": "Taglia le verdure a pezzetti piccoli."}, {"term": "affettare", "pos": "verbo", "translation": "нарезать ломтиками", "chunk": "affettare il pane / affettare il prosciutto", "example": "Puoi affettare il pane per favore?"}, {"term": "sbucciare", "pos": "verbo", "translation": "чистить от кожуры", "chunk": "sbucciare una mela / sbucciare le patate", "example": "Devo sbucciare le patate prima di cuocerle."}, {"term": "lavare", "pos": "verbo", "translation": "мыть", "chunk": "lavare l'insalata / lavare la frutta", "example": "Lava bene l'insalata prima di mangiarla."}, {"term": "aggiungere", "pos": "verbo", "translation": "добавлять", "chunk": "aggiungere sale / aggiungere olio", "example": "Aggiungi un po' di sale nell'acqua."}, {"term": "mescolare", "pos": "verbo", "translation": "перемешивать", "chunk": "mescolare la salsa / mescolare bene", "example": "Mescola bene il sugo con un cucchiaio."}, {"term": "mettere", "pos": "verbo", "translation": "класть; ставить", "chunk": "mettere in forno / mettere sul tavolo", "example": "Metti la torta in forno per venti minuti."}, {"term": "versare", "pos": "verbo", "translation": "наливать", "chunk": "versare l'acqua / versare il latte", "example": "Versa il latte nella ciotola."}, {"term": "cuocere", "pos": "verbo", "translation": "готовить термически; варить/печь/жарить", "chunk": "cuocere la pasta / cuocere in padella", "example": "La pasta deve cuocere per dieci minuti."}, {"term": "bollire", "pos": "verbo", "translation": "кипятить; варить", "chunk": "bollire l'acqua / bollire le patate", "example": "Fai bollire l'acqua prima di mettere la pasta."}, {"term": "friggere", "pos": "verbo", "translation": "жарить на масле / во фритюре", "chunk": "friggere le patate / friggere in padella", "example": "Non voglio friggere le patate, preferisco farle al forno."}, {"term": "arrostire", "pos": "verbo", "translation": "запекать; жарить", "chunk": "arrostire il pollo / verdure arrosto", "example": "Possiamo arrostire le verdure con olio e rosmarino."}, {"term": "infornare", "pos": "verbo", "translation": "ставить в духовку", "chunk": "infornare la pizza / infornare una torta", "example": "Quando il forno è caldo, puoi infornare la pizza."}, {"term": "condire", "pos": "verbo", "translation": "заправлять; приправлять", "chunk": "condire l'insalata / condire la pasta", "example": "Condisci l'insalata con olio e aceto."}, {"term": "assaggiare", "pos": "verbo", "translation": "пробовать на вкус", "chunk": "assaggiare il sugo / assaggiare un piatto", "example": "Assaggia il sugo: forse manca un po' di sale."}, {"term": "impastare", "pos": "verbo", "translation": "замешивать тесто", "chunk": "impastare la pizza / impastare il pane", "example": "Per fare la pizza bisogna impastare farina, acqua e lievito."}, {"term": "grattugiare", "pos": "verbo", "translation": "натирать", "chunk": "grattugiare il formaggio / grattugiare la carota", "example": "Grattugia un po' di parmigiano sulla pasta."}, {"term": "tritare", "pos": "verbo", "translation": "измельчать; мелко резать", "chunk": "tritare la cipolla / tritare il prezzemolo", "example": "Trita la cipolla finemente."}];
-const quiz = [{"sentence": "La domenica mi piace _____ qualcosa di speciale.", "answer": "cucinare", "options": ["cucinare", "preparare", "tagliare", "affettare"]}, {"sentence": "Oggi voglio _____ per i miei amici.", "answer": "cucinare", "options": ["cucinare", "preparare", "tagliare", "affettare"]}, {"sentence": "Prima di iniziare, devo _____ tutti gli ingredienti.", "answer": "preparare", "options": ["preparare", "sbucciare", "lavare", "aggiungere"]}, {"sentence": "Puoi _____ la cena mentre arrivo?", "answer": "preparare", "options": ["preparare", "sbucciare", "lavare", "aggiungere"]}, {"sentence": "Devo _____ le verdure a pezzetti piccoli.", "answer": "tagliare", "options": ["tagliare", "mescolare", "mettere", "versare"]}, {"sentence": "Puoi _____ il pane?", "answer": "tagliare", "options": ["tagliare", "mescolare", "mettere", "versare"]}, {"sentence": "Vorrei _____ il prosciutto molto sottile.", "answer": "affettare", "options": ["affettare", "cuocere", "bollire", "friggere"]}, {"sentence": "Puoi _____ il pane per favore?", "answer": "affettare", "options": ["affettare", "cuocere", "bollire", "friggere"]}, {"sentence": "Devo _____ le patate prima di cuocerle.", "answer": "sbucciare", "options": ["sbucciare", "arrostire", "infornare", "condire"]}, {"sentence": "Prima di mangiare la mela, la devo _____.", "answer": "sbucciare", "options": ["sbucciare", "arrostire", "infornare", "condire"]}, {"sentence": "Prima di mangiarla, bisogna _____ l'insalata.", "answer": "lavare", "options": ["lavare", "assaggiare", "impastare", "grattugiare"]}, {"sentence": "Devo _____ la frutta.", "answer": "lavare", "options": ["lavare", "assaggiare", "impastare", "grattugiare"]}, {"sentence": "Puoi _____ un po' di sale?", "answer": "aggiungere", "options": ["aggiungere", "tritare", "cucinare", "preparare"]}, {"sentence": "Alla fine devi _____ l'olio.", "answer": "aggiungere", "options": ["aggiungere", "tritare", "cucinare", "preparare"]}, {"sentence": "Devi _____ bene il sugo.", "answer": "mescolare", "options": ["mescolare", "tagliare", "affettare", "sbucciare"]}, {"sentence": "Con un cucchiaio puoi _____ gli ingredienti.", "answer": "mescolare", "options": ["mescolare", "tagliare", "affettare", "sbucciare"]}, {"sentence": "Puoi _____ la torta in forno.", "answer": "mettere", "options": ["mettere", "lavare", "aggiungere", "mescolare"]}, {"sentence": "Devo _____ il sale nell'acqua.", "answer": "mettere", "options": ["mettere", "lavare", "aggiungere", "mescolare"]}, {"sentence": "Puoi _____ il latte nella ciotola.", "answer": "versare", "options": ["versare", "mettere", "cuocere", "bollire"]}, {"sentence": "Devi _____ l'acqua nel bicchiere.", "answer": "versare", "options": ["versare", "mettere", "cuocere", "bollire"]}, {"sentence": "La pasta deve _____ per dieci minuti.", "answer": "cuocere", "options": ["cuocere", "friggere", "arrostire", "infornare"]}, {"sentence": "Quanto deve _____ il riso?", "answer": "cuocere", "options": ["cuocere", "friggere", "arrostire", "infornare"]}, {"sentence": "Fai _____ l'acqua prima di mettere la pasta.", "answer": "bollire", "options": ["bollire", "condire", "assaggiare", "impastare"]}, {"sentence": "Devo _____ le patate.", "answer": "bollire", "options": ["bollire", "condire", "assaggiare", "impastare"]}, {"sentence": "Non voglio _____ le patate.", "answer": "friggere", "options": ["friggere", "grattugiare", "tritare", "cucinare"]}, {"sentence": "Per questa ricetta bisogna _____ in olio caldo.", "answer": "friggere", "options": ["friggere", "grattugiare", "tritare", "cucinare"]}, {"sentence": "Possiamo _____ le verdure con olio e rosmarino.", "answer": "arrostire", "options": ["arrostire", "preparare", "tagliare", "affettare"]}, {"sentence": "Vorrei _____ il pollo al forno.", "answer": "arrostire", "options": ["arrostire", "preparare", "tagliare", "affettare"]}, {"sentence": "Quando il forno è caldo, puoi _____ la pizza.", "answer": "infornare", "options": ["infornare", "sbucciare", "lavare", "aggiungere"]}, {"sentence": "È il momento di _____ la torta.", "answer": "infornare", "options": ["infornare", "sbucciare", "lavare", "aggiungere"]}, {"sentence": "Puoi _____ l'insalata con olio e aceto.", "answer": "condire", "options": ["condire", "mescolare", "mettere", "versare"]}, {"sentence": "Mi piace _____ la pasta con il pesto.", "answer": "condire", "options": ["condire", "mescolare", "mettere", "versare"]}, {"sentence": "Puoi _____ il sugo?", "answer": "assaggiare", "options": ["assaggiare", "cuocere", "bollire", "friggere"]}, {"sentence": "Prima di servire, bisogna _____.", "answer": "assaggiare", "options": ["assaggiare", "cuocere", "bollire", "friggere"]}, {"sentence": "Per fare la pizza bisogna _____ farina, acqua e lievito.", "answer": "impastare", "options": ["impastare", "arrostire", "infornare", "condire"]}, {"sentence": "Mi piace _____ il pane a mano.", "answer": "impastare", "options": ["impastare", "arrostire", "infornare", "condire"]}, {"sentence": "Puoi _____ un po' di parmigiano?", "answer": "grattugiare", "options": ["grattugiare", "assaggiare", "impastare", "tritare"]}, {"sentence": "Devo _____ la carota.", "answer": "grattugiare", "options": ["grattugiare", "assaggiare", "impastare", "tritare"]}, {"sentence": "Devi _____ la cipolla finemente.", "answer": "tritare", "options": ["tritare", "cucinare", "preparare", "tagliare"]}, {"sentence": "Puoi _____ il prezzemolo?", "answer": "tritare", "options": ["tritare", "cucinare", "preparare", "tagliare"]}];
-const $=id=>document.getElementById(id);let cardIndex=0,flipped=false,known=new Set(),review=new Set(),filter='all',quizIndex=0,right=0,wrong=0,chosen=null;
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-function visible(){if(filter==='known')return items.filter(x=>known.has(x.term));if(filter==='review')return items.filter(x=>review.has(x.term));return items}
-function init(){topLeft.textContent=items.length+' parole';topRight.textContent=quiz.length+' quiz';totalCards.textContent=items.length;document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>show(b.dataset.tab));flipCard.onclick=()=>{flipped=!flipped;renderCard()};prevCard.onclick=()=>move(-1);nextCard.onclick=()=>move(1);markYes.onclick=()=>{let v=current();if(!v)return;known.add(v.term);review.delete(v.term);move(1)};markNo.onclick=()=>{let v=current();if(!v)return;review.add(v.term);known.delete(v.term);move(1)};filterAll.onclick=()=>setFilter('all');filterKnown.onclick=()=>setFilter('known');filterReview.onclick=()=>setFilter('review');prevQuiz.onclick=()=>{quizIndex=Math.max(0,quizIndex-1);chosen=null;renderQuiz()};quizYes.onclick=()=>{right++;nextQuiz()};quizNo.onclick=()=>{wrong++;nextQuiz()};quizletBtn.onclick=()=>exportData('quizlet');ankiBtn.onclick=()=>exportData('anki');csvBtn.onclick=()=>exportData('csv');renderCard();renderQuiz();renderList()}
-function show(tab){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===tab))}
-function setFilter(f){filter=f;cardIndex=0;flipped=false;[filterAll,filterKnown,filterReview].forEach(x=>x.classList.remove('active'));({all:filterAll,known:filterKnown,review:filterReview}[f]).classList.add('active');renderCard()}
-function current(){let arr=visible();return arr.length?arr[Math.min(cardIndex,arr.length-1)]:null}
-function move(d){let arr=visible();if(!arr.length){renderCard();return}cardIndex=(cardIndex+d+arr.length)%arr.length;flipped=false;renderCard()}
-function renderCard(){let arr=visible();knownCards.textContent=known.size;reviewCards.textContent=review.size;if(!arr.length){cardPos.textContent='0 / 0';cardPct.textContent='0%';cardBar.style.width='0%';num.textContent='—';term.textContent=filter==='review'?'Niente da ripassare':'Niente qui';chunk.textContent='';translation.textContent='';example.textContent='';flipCard.classList.toggle('flipped',false);return} if(cardIndex>=arr.length)cardIndex=0;const v=arr[cardIndex],pct=Math.round((cardIndex+1)/arr.length*100);cardPos.textContent=(cardIndex+1)+' / '+arr.length;cardPct.textContent=pct+'%';cardBar.style.width=pct+'%';num.textContent=String(cardIndex+1).padStart(2,'0');term.textContent=v.term;chunk.textContent=v.chunk;translation.textContent=v.translation;example.textContent='“'+v.example+'”';flipCard.classList.toggle('flipped',flipped)}
-function renderQuiz(){const q=quiz[quizIndex],pct=Math.round((quizIndex+1)/quiz.length*100);quizPos.textContent=(quizIndex+1)+' / '+quiz.length;quizScore.textContent='✓ '+right+' · × '+wrong;quizBar.style.width=pct+'%';wordBank.textContent=q.options.join(', ');sentence.innerHTML=esc(q.sentence).replace('_____','<span class="blank"></span>');feedback.textContent='';quizOptions.innerHTML='';q.options.slice().sort(()=>Math.random()-.5).forEach(opt=>{let b=document.createElement('button');b.className='opt';b.textContent=opt;b.onclick=()=>choose(b,opt,q.answer);quizOptions.appendChild(b)})}
-function choose(btn,opt,answer){if(chosen)return;chosen=opt;[...quizOptions.children].forEach(b=>{if(b.textContent===answer)b.classList.add('ok')});if(opt===answer){btn.classList.add('ok');feedback.textContent='Giusto! Puoi premere «Lo so».'}else{btn.classList.add('no');feedback.textContent='Risposta giusta: '+answer}}
-function nextQuiz(){quizIndex=(quizIndex+1)%quiz.length;chosen=null;renderQuiz()}
-function renderList(){listBox.innerHTML=items.map(v=>`<div class="item"><div class="itemHeader"><span class="itemTerm">${esc(v.term)}</span><span class="itemPos">${esc(v.pos)}</span></div><p><b>${esc(v.translation)}</b></p><p><em>${esc(v.example)}</em></p><p>${esc(v.chunk)}</p></div>`).join('')}
-function exportData(type){let text='';if(type==='quizlet'){text=items.map(v=>`${v.term}\t${v.translation} — ${v.example}`).join('\n');navigator.clipboard&&navigator.clipboard.writeText(text)}if(type==='anki'){text=items.map(v=>`${v.term}\t${v.translation}\t${v.example}\t${v.chunk}`).join('\n');download('bogdano-italiano-cards-anki.txt',text)}if(type==='csv'){text=['term,translation,example,chunk',...items.map(v=>[v.term,v.translation,v.example,v.chunk].map(csv).join(','))].join('\n');download('bogdano-italiano-cards.csv',text)}exportText.value=text}
-function csv(s){return '"'+String(s).replaceAll('"','""')+'"'}function download(name,text){const blob=new Blob([text],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}init();
-</script></body></html>
+const cards = [{"term": "cucinare", "translation": "готовить", "chunk": "cucinare la pasta / cucinare per gli amici", "example": "La domenica mi piace cucinare qualcosa di speciale."}, {"term": "preparare", "translation": "готовить; подготавливать", "chunk": "preparare la cena / preparare gli ingredienti", "example": "Devo preparare la cena prima che arrivino gli amici."}, {"term": "tagliare", "translation": "резать", "chunk": "tagliare il pane / tagliare le verdure", "example": "Puoi tagliare il pane per tutti?"}, {"term": "affettare", "translation": "нарезать ломтиками", "chunk": "affettare il pane / affettare il prosciutto", "example": "Il salumiere affetta il prosciutto molto sottile."}, {"term": "sbucciare", "translation": "чистить от кожуры", "chunk": "sbucciare una mela / sbucciare le patate", "example": "Prima del purè devo sbucciare le patate."}, {"term": "lavare", "translation": "мыть", "chunk": "lavare l'insalata / lavare la frutta", "example": "Ricordati di lavare la frutta."}, {"term": "aggiungere", "translation": "добавлять", "chunk": "aggiungere sale / aggiungere olio", "example": "Alla fine puoi aggiungere un po' di sale."}, {"term": "mescolare", "translation": "перемешивать", "chunk": "mescolare la salsa / mescolare bene", "example": "Devi mescolare bene la salsa."}, {"term": "mettere", "translation": "класть; ставить", "chunk": "mettere in forno / mettere sul tavolo", "example": "Puoi mettere i piatti sul tavolo?"}, {"term": "versare", "translation": "наливать", "chunk": "versare l'acqua / versare il latte", "example": "Puoi versare il latte nel bicchiere?"}, {"term": "cuocere", "translation": "готовить термически", "chunk": "cuocere la pasta / cuocere in padella", "example": "Il riso deve cuocere ancora qualche minuto."}, {"term": "bollire", "translation": "кипятить; варить", "chunk": "bollire l'acqua / bollire le patate", "example": "Prima della pasta bisogna far bollire l'acqua."}, {"term": "friggere", "translation": "жарить на масле", "chunk": "friggere le patate / friggere in padella", "example": "Oggi voglio friggere le patate nell'olio."}, {"term": "arrostire", "translation": "запекать; жарить", "chunk": "arrostire il pollo / verdure arrosto", "example": "Per cena possiamo arrostire il pollo."}, {"term": "infornare", "translation": "ставить в духовку", "chunk": "infornare la pizza / infornare una torta", "example": "Il forno è caldo: possiamo infornare la pizza."}, {"term": "condire", "translation": "заправлять; приправлять", "chunk": "condire l'insalata / condire la pasta", "example": "Devi condire l'insalata prima di servirla."}, {"term": "assaggiare", "translation": "пробовать на вкус", "chunk": "assaggiare il sugo / assaggiare un piatto", "example": "Vuoi assaggiare il sugo?"}, {"term": "impastare", "translation": "замешивать тесто", "chunk": "impastare la pizza / impastare il pane", "example": "Per fare il pane bisogna impastare farina, acqua e lievito."}, {"term": "grattugiare", "translation": "натирать", "chunk": "grattugiare il formaggio / grattugiare la carota", "example": "Devi grattugiare il parmigiano sulla pasta."}, {"term": "tritare", "translation": "измельчать; мелко резать", "chunk": "tritare la cipolla / tritare il prezzemolo", "example": "Per il soffritto devi tritare la cipolla molto finemente."}];
+const quiz = [{"answer": "cucino", "sentence": "Quando ho ospiti a casa, _____ volentieri.", "options": ["cucino", "taglio", "bollo", "condisco"]}, {"answer": "cucina", "sentence": "La domenica mia nonna _____ per tutta la famiglia.", "options": ["cucina", "versa", "sbuccia", "grattugia"]}, {"answer": "preparo", "sentence": "Stasera _____ la cena per gli amici.", "options": ["preparo", "lavo", "bollo", "trito"]}, {"answer": "prepara", "sentence": "Marta _____ il pranzo per domani.", "options": ["prepara", "versa", "affetta", "frigge"]}, {"answer": "tagliare", "sentence": "Puoi _____ il pane per tutti?", "options": ["tagliare", "cuocere", "condire", "bollire"]}, {"answer": "taglio", "sentence": "Con questo coltello _____ la zucca.", "options": ["taglio", "verso", "assaggio", "cuocio"]}, {"answer": "affetta", "sentence": "Il salumiere _____ il prosciutto molto sottile.", "options": ["affetta", "lava", "bolle", "impasta"]}, {"answer": "affetto", "sentence": "Per l'antipasto _____ la mozzarella.", "options": ["affetto", "verso", "cuocio", "condisco"]}, {"answer": "sbuccio", "sentence": "Per il purè _____ le patate.", "options": ["sbuccio", "verso", "mescolo", "friggo"]}, {"answer": "sbuccia", "sentence": "Prima di darla al bambino, Luca _____ la mela.", "options": ["sbuccia", "arrostisce", "aggiunge", "mescola"]}, {"answer": "lavo", "sentence": "Prima di mangiarla, _____ l'insalata.", "options": ["lavo", "inforno", "grattugio", "friggo"]}, {"answer": "lavare", "sentence": "Ricordati di _____ la frutta.", "options": ["lavare", "arrostire", "impastare", "cuocere"]}, {"answer": "aggiungo", "sentence": "Alla fine _____ un po' di sale.", "options": ["aggiungo", "lavo", "affetto", "arrostisco"]}, {"answer": "aggiunge", "sentence": "Marco _____ un cucchiaio d'olio alla zuppa.", "options": ["aggiunge", "sbuccia", "trita", "inforna"]}, {"answer": "mescolo", "sentence": "Per ottenere una salsa uniforme, _____ bene.", "options": ["mescolo", "taglio", "bollo", "grattugio"]}, {"answer": "mescolare", "sentence": "Puoi _____ gli ingredienti nella ciotola?", "options": ["mescolare", "lavare", "affettare", "friggere"]}, {"answer": "metto", "sentence": "Prima di cena _____ i piatti sul tavolo.", "options": ["metto", "cuocio", "trito", "bollo"]}, {"answer": "mette", "sentence": "Anna _____ il formaggio nel frigorifero.", "options": ["mette", "versa", "arrostisce", "impasta"]}, {"answer": "verso", "sentence": "A colazione _____ il latte nel bicchiere.", "options": ["verso", "taglio", "sbuccio", "grattugio"]}, {"answer": "versare", "sentence": "Puoi _____ l'acqua nella pentola?", "options": ["versare", "affettare", "friggere", "condire"]}, {"answer": "cuoce", "sentence": "Il riso _____ ancora qualche minuto.", "options": ["cuoce", "lava", "taglia", "versa"]}, {"answer": "cuoce", "sentence": "Questa carne _____ lentamente.", "options": ["cuoce", "sbuccia", "aggiunge", "impasta"]}, {"answer": "bolle", "sentence": "L'acqua _____ già: mettiamo la pasta.", "options": ["bolle", "taglia", "condisce", "trita"]}, {"answer": "bollono", "sentence": "Le patate _____ per venti minuti.", "options": ["bollono", "grattugiano", "versano", "affettano"]}, {"answer": "friggo", "sentence": "Oggi _____ le patate nell'olio.", "options": ["friggo", "lavo", "sbuccio", "mescolo"]}, {"answer": "frigge", "sentence": "Giulia non _____ mai il pesce.", "options": ["frigge", "impasta", "versa", "taglia"]}, {"answer": "arrostiamo", "sentence": "Per cena _____ il pollo.", "options": ["arrostiamo", "laviamo", "grattugiamo", "versiamo"]}, {"answer": "arrostisco", "sentence": "Nel forno _____ spesso le verdure.", "options": ["arrostisco", "sbuccio", "aggiungo", "mescolo"]}, {"answer": "inforniamo", "sentence": "Il forno è caldo: _____ la pizza.", "options": ["inforniamo", "laviamo", "affettiamo", "versiamo"]}, {"answer": "inforno", "sentence": "Adesso _____ la torta.", "options": ["inforno", "trito", "condisco", "bollo"]}, {"answer": "condisco", "sentence": "A pranzo _____ la pasta con il pesto.", "options": ["condisco", "impasto", "cuocio", "sbuccio"]}, {"answer": "condisce", "sentence": "Luca _____ la pasta con il pesto.", "options": ["condisce", "lava", "versa", "trita"]}, {"answer": "assaggio", "sentence": "Prima di servire, _____ il sugo.", "options": ["assaggio", "inforno", "grattugio", "sbuccio"]}, {"answer": "assaggia", "sentence": "Lo chef _____ il piatto prima di servirlo.", "options": ["assaggia", "bolle", "affetta", "mette"]}, {"answer": "impasto", "sentence": "Per fare il pane _____ farina, acqua e lievito.", "options": ["impasto", "grattugio", "friggo", "verso"]}, {"answer": "impasta", "sentence": "Mio padre _____ a mano la pasta fresca.", "options": ["impasta", "lava", "bolle", "affetta"]}, {"answer": "grattugio", "sentence": "Sulla pasta _____ il parmigiano.", "options": ["grattugio", "verso", "sbuccio", "cuocio"]}, {"answer": "grattugiamo", "sentence": "Sul dolce _____ un po' di cioccolato.", "options": ["grattugiamo", "tagliamo", "bolliamo", "arrostiamo"]}, {"answer": "trito", "sentence": "Per il soffritto _____ la cipolla molto finemente.", "options": ["trito", "verso", "inforno", "condisco"]}, {"answer": "trito", "sentence": "Per la salsa _____ il prezzemolo.", "options": ["trito", "friggo", "inforno", "condisco"]}];
+const STORAGE_KEY='bogdano_italiano_cards_verbi_cucina_v1';
+const $=(id)=>document.getElementById(id);
+let cardIndex=0, filter='new', flipped=false;
+let known=new Set(), review=new Set();
+let quizIndex=0, quizOrder=shuffleArray(quiz.map((_,i)=>i)), answered=new Map(), optionOrder=new Map(), right=0, wrong=0, quizFinished=false;
+let lastQuizScore=null;
+
+function loadProgress(){
+  try{
+    const data=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
+    known=new Set(data.known||[]);
+    review=new Set(data.review||[]);
+    lastQuizScore=data.lastQuizScore||null;
+  }catch(e){}
+}
+function saveProgress(){
+  localStorage.setItem(STORAGE_KEY,JSON.stringify({known:[...known],review:[...review],lastQuizScore}));
+}
+function visibleCards(){
+  if(filter==='known') return cards.filter(c=>known.has(c.term));
+  if(filter==='review') return cards.filter(c=>review.has(c.term));
+  return cards.filter(c=>!known.has(c.term)&&!review.has(c.term));
+}
+function updateCounts(){
+  $('newCount').textContent=cards.filter(c=>!known.has(c.term)&&!review.has(c.term)).length;
+  $('knownCount').textContent=known.size;
+  $('reviewCount').textContent=review.size;
+  $('metaWords').textContent=cards.length+' parole';
+  $('metaQuiz').textContent=quiz.length+' quiz';
+}
+function showTab(tab){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  $(tab+'Panel').classList.add('active');
+  if(tab==='quiz') renderQuiz();
+  if(tab==='list') renderList();
+  if(tab==='export') renderExport();
+  if(tab==='stats') renderStats();
+}
+function setFilter(f){
+  filter=f; cardIndex=0; flipped=false;
+  document.querySelectorAll('.counter').forEach(b=>b.classList.remove('active'));
+  $('filter'+(f==='new'?'New':f==='known'?'Known':'Review')).classList.add('active');
+  renderCard();
+}
+function renderCard(){
+  updateCounts();
+  const arr=visibleCards();
+  if(!arr.length){
+    $('cardBar').style.width='0%';
+    $('cardNum').textContent='—';
+    $('term').textContent=filter==='new'?'Tutto fatto!':filter==='review'?'Niente da ripassare':'Niente qui';
+    $('chunk').textContent=''; $('frontExample').textContent=''; $('translation').textContent=''; $('example').textContent='';
+    $('flipCard').classList.remove('flipped');
+    return;
+  }
+  if(cardIndex>=arr.length) cardIndex=0;
+  const c=arr[cardIndex];
+  $('cardBar').style.width=Math.round((cardIndex+1)/arr.length*100)+'%';
+  $('cardNum').textContent=String(cardIndex+1).padStart(2,'0');
+  $('term').textContent=c.term;
+  $('chunk').textContent=c.chunk;
+  $('frontExample').textContent='';
+  $('translation').textContent=c.translation;
+  $('example').textContent='“'+c.example+'”';
+  $('flipCard').classList.toggle('flipped',flipped);
+}
+function moveCard(d){
+  const arr=visibleCards();
+  if(!arr.length) return renderCard();
+  cardIndex=(cardIndex+d+arr.length)%arr.length;
+  flipped=false; renderCard();
+}
+function mark(type){
+  const arr=visibleCards();
+  if(!arr.length) return;
+  const c=arr[cardIndex];
+  if(type==='known'){ known.add(c.term); review.delete(c.term); }
+  else { review.add(c.term); known.delete(c.term); }
+  saveProgress(); moveCard(1);
+}
+function renderList(){
+  $('listBox').innerHTML=cards.map(c=>`<div class="item"><div class="itemHeader"><span class="itemTerm">${escapeHtml(c.term)}</span><span class="itemPos">VERBO</span></div><p><b>${escapeHtml(c.translation)}</b></p><p><em>${escapeHtml(c.example)}</em></p><p>${escapeHtml(c.chunk)}</p></div>`).join('');
+}
+
+function renderQuiz(){
+  if(quizFinished) return finishQuiz();
+  const real=quizOrder[quizIndex], q=quiz[real], saved=answered.get(real);
+  $('quizBar').style.width=Math.round((quizIndex+1)/quizOrder.length*100)+'%';
+  $('sentence').innerHTML=escapeHtml(q.sentence).replace('_____','<span class="blank"></span>');
+  $('feedback').textContent=`${quizIndex+1} / ${quizOrder.length} · giuste: ${right} · errori: ${wrong}`;
+  $('options').innerHTML='';
+  if(!optionOrder.has(real)) optionOrder.set(real, shuffleArray([...q.options]));
+  optionOrder.get(real).forEach(opt=>{
+    const b=document.createElement('button');
+    b.className='opt'; b.textContent=opt;
+    b.onclick=()=>answerQuiz(opt,q.answer,real);
+    if(saved){
+      b.disabled=true;
+      if(opt===q.answer) b.classList.add('ok');
+      if(opt===saved.choice && !saved.ok) b.classList.add('no');
+    }
+    $('options').appendChild(b);
+  });
+  if(saved) $('feedback').textContent=saved.ok?'Risposta corretta':'Risposta giusta: '+q.answer;
+  $('nextQuiz').textContent=saved?'Avanti →':'Saltare →';
+}
+function answerQuiz(opt,answer,real){
+  if(answered.has(real)) return;
+  const ok=opt===answer;
+  answered.set(real,{ok,choice:opt});
+  if(ok) right++; else wrong++;
+  renderQuiz();
+  setTimeout(nextQuiz,1500);
+}
+function nextQuiz(){
+  const real=quizOrder[quizIndex];
+  if(!answered.has(real)){
+    const skipped=quizOrder.splice(quizIndex,1)[0];
+    quizOrder.push(skipped);
+    if(quizIndex>=quizOrder.length) quizIndex=quizOrder.length-1;
+    renderQuiz(); return;
+  }
+  if(quizIndex<quizOrder.length-1){ quizIndex++; renderQuiz(); }
+  else { quizFinished=true; finishQuiz(); }
+}
+function prevQuiz(){ if(quizIndex>0){ quizIndex--; renderQuiz(); } }
+function finishQuiz(){
+  $('quizBar').style.width='100%';
+  lastQuizScore={right,total:quiz.length,percent:Math.round((right/quiz.length)*100)};
+  saveProgress();
+  $('quizBox').innerHTML=`<div class="finish"><h2>Complimenti!</h2><p>Hai completato il quiz.</p><p>Risposte corrette: <b>${right}</b> / <b>${quiz.length}</b></p><p>Percentuale: <b>${lastQuizScore.percent}%</b></p><button class="btn yellow" onclick="restartQuiz()">Ricomincia il quiz</button></div>`;
+}
+function restartQuiz(){
+  quizIndex=0; quizOrder=shuffleArray(quiz.map((_,i)=>i)); answered=new Map(); optionOrder=new Map(); right=0; wrong=0; quizFinished=false;
+  $('quizBox').innerHTML=`<h2 class="quizTitle">Completa la frase</h2><div class="sentence" id="sentence"></div><div class="opts" id="options"></div><div class="feedback" id="feedback"></div><div class="quizControls"><button class="btn" id="prevQuiz">← Indietro</button><button class="btn yellow" id="nextQuiz">Avanti →</button></div>`;
+  bindQuizButtons(); renderQuiz();
+}
+
+function renderExport(){
+  $('exportText').value=quizletText();
+}
+function quizletText(){
+  return cards.map(c=>`${c.term}\t${c.translation} — ${c.example}`).join('\n');
+}
+function exportData(type){
+  if(type==='quizlet'){
+    navigator.clipboard?.writeText(quizletText());
+    $('copyQuizlet').textContent='Copiato!';
+    setTimeout(()=>$('copyQuizlet').textContent='Copia per Quizlet',1200);
+  }
+  if(type==='anki') download('bogdano-italiano-cards-anki.txt', cards.map(c=>`${c.term}\t${c.translation}\t${c.example}\t${c.chunk}`).join('\n'));
+  if(type==='csv') download('bogdano-italiano-cards.csv', ['term,translation,example,chunk',...cards.map(c=>[c.term,c.translation,c.example,c.chunk].map(x=>'"'+String(x).replaceAll('"','""')+'"').join(','))].join('\n'));
+}
+function renderStats(){
+  const newWords=cards.filter(c=>!known.has(c.term)&&!review.has(c.term)).length;
+  const completed=Math.round(((known.size+review.size)/cards.length)*100);
+  $('statsBox').innerHTML=`<div class="item"><p><b>Parole totali:</b> ${cards.length}</p><p><b>Nuove:</b> ${newWords}</p><p><b>So:</b> ${known.size}</p><p><b>Da ripassare:</b> ${review.size}</p><p><b>Completamento:</b> ${completed}%</p>${lastQuizScore?`<p><b>Ultimo quiz:</b> ${lastQuizScore.right}/${lastQuizScore.total} (${lastQuizScore.percent}%)</p>`:''}</div>`;
+}
+function resetAll(){
+  known=new Set(); review=new Set(); lastQuizScore=null; saveProgress(); setFilter('new'); renderStats();
+}
+function download(name,text){
+  const blob=new Blob([text],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob), a=document.createElement('a');
+  a.href=url; a.download=name; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),800);
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function shuffleArray(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
+function bindQuizButtons(){ $('prevQuiz').onclick=prevQuiz; $('nextQuiz').onclick=nextQuiz; }
+
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+$('flipCard').onclick=()=>{flipped=!flipped;renderCard();};
+$('prevCard').onclick=()=>moveCard(-1); $('nextCard').onclick=()=>moveCard(1);
+$('markKnown').onclick=()=>mark('known'); $('markReview').onclick=()=>mark('review');
+$('filterNew').onclick=()=>setFilter('new'); $('filterKnown').onclick=()=>setFilter('known'); $('filterReview').onclick=()=>setFilter('review');
+$('copyQuizlet').onclick=()=>exportData('quizlet'); $('downloadAnki').onclick=()=>exportData('anki'); $('downloadCsv').onclick=()=>exportData('csv');
+$('resetAll').onclick=resetAll;
+bindQuizButtons(); loadProgress(); updateCounts(); renderCard();
+</script>
+</body>
+</html>
